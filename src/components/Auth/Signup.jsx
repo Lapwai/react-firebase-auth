@@ -20,12 +20,7 @@ const validationSchema = Yup.object().shape({
       /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
       "Invalid email"
     ),
-  password: Yup.string()
-    .required("Password is required")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Must contain 8 characters, one uppercase, one lowercase, one number and one special case character"
-    ),
+  password: Yup.string().required("Password is required"),
   passwordConfirm: Yup.string().oneOf(
     [Yup.ref("password"), null],
     "Passwords must match"
